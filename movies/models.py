@@ -8,7 +8,7 @@ class Human(models.Model):
     photo = models.ImageField('Фото', upload_to='photos', blank=True, null=True)
 
     def get_full_name(self):
-        return f'{self.firstname} {self.lastname}'
+        return '{0} {1}'.format(self.firstname, self.lastname)
 
     def __str__(self):
         return self.get_full_name()
@@ -64,7 +64,7 @@ class Movie(models.Model):
 
     def __str__(self):
         if self.created:
-            return f'{self.title} ({self.created.year})'
+            return '{0} ({1})'.format(self.title, self.created.year)
         return self.title
 
     class Meta:

@@ -7,12 +7,12 @@ class Author(models.Model):
     lastname = models.CharField('Фамилия', max_length=30, blank=True)
 
     def get_full_name(self):
-        return f'{self.firstname} {self.lastname}'
+        return '{0} {1}'.format(self.firstname, self.lastname)
 
     def __str__(self):
         if self.firstname and self.lastname:
-            return f'{self.username} ({self.get_full_name()})'
-        return f'{self.username}'
+            return '{0} ({1})'.format(self.username, self.get_full_name())
+        return '{0}'.format(self.username)
 
     class Meta:
         verbose_name = 'Автор'
