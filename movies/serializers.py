@@ -1,10 +1,13 @@
-from .models import Actor, Country, Director, Genre, Movie
 from rest_framework import serializers
+
+from .models import Actor, Country, Director, Genre, Movie
 
 
 class ActorSerializer(serializers.ModelSerializer):
     class Meta:
+        # указываем какую модель сериализовывать
         model = Actor
+        # указываем какие поля модели сериализовывать
         fields = '__all__'
 
 

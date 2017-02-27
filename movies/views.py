@@ -1,11 +1,14 @@
-from rest_framework import viewsets, parsers
+from rest_framework import viewsets
 
 from .models import Actor, Country, Director, Genre, Movie
 from .serializers import ActorSerializer, CountrySerializer, DirectorSerializer, GenreSerializer, MovieSerializer
 
 
 class ActorViewSet(viewsets.ModelViewSet):
+    # какие данные использовать
+    # в данном случае все записи из модели Actor
     queryset = Actor.objects.all()
+    # какой сериализатор использовать
     serializer_class = ActorSerializer
 
 
@@ -27,4 +30,3 @@ class GenreViewSet(viewsets.ModelViewSet):
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
-    # parser_classes = (parsers.Parser,)

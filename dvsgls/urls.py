@@ -5,6 +5,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # регистрируем `urlpatterns` модуля `movies` в общий `urlpatterns` всего проекта
     url(r'^api/v1/', include('movies.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

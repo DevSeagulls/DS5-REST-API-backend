@@ -1,7 +1,14 @@
 from django.db import models
 
 
+# описываем модели, которые автоматически будут преобразованны в таблицы в БД
+
+
 class Human(models.Model):
+    """
+    абстрактный класс для того чтобы не дублировать код
+    он в таблицу преобразован не будет
+    """
     firstname = models.CharField('Имечко', max_length=30)
     lastname = models.CharField('Фамилия', max_length=30)
     birthdate = models.DateField('Дата рождения', blank=True, null=True)
@@ -19,7 +26,9 @@ class Human(models.Model):
 
 class Director(Human):
     class Meta:
+        # для отображения названия в админке в ед.числе
         verbose_name = 'Режиссер'
+        # для отображения названия в админке в мн.числе
         verbose_name_plural = 'Режиссеры'
 
 
@@ -33,6 +42,8 @@ class Country(models.Model):
     name = models.CharField('Страна', max_length=128)
 
     def __str__(self):
+        # для отображения в админке выбранного поля
+        # вместо `Country object` будет выводиться название страны
         return self.name
 
     class Meta:
